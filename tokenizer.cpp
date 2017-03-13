@@ -6,11 +6,29 @@ std::vector<Token> Tokenizer::split (std::string str)
   std::vector<Token> result;
   for (int i=0; i<str.length(); ++i) {
     char c = str[i];
-    if (c=='+' || c=='-' || c=='*' || c=='/')
+    if (c=='+')
     {
       std::string op;
       op += c;
-      result.push_back(Token(OPERATOR,op));
+      result.push_back(Token(PLUS,op));
+    }
+    else if (c=='-')
+    {
+      std::string op;
+      op += c;
+      result.push_back(Token(MINUS,op));
+    }
+    else if (c=='*')
+    {
+      std::string op;
+      op += c;
+      result.push_back(Token(STAR,op));
+    }
+    else if (c=='/')
+    {
+      std::string op;
+      op += c;
+      result.push_back(Token(SLASH,op));
     }
     else if (isblank(c)) continue;
     else if (isdigit(c))
