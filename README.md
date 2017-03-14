@@ -3,7 +3,10 @@
 
 ![alt text][id]
 
-At the bottom of the document:
+[id]: LogoICTP.pdf "ICTP"
+
+
+![alt text][id]
 
 [id]: Calculator1.jpeg "Calculator"
 
