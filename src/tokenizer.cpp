@@ -1,6 +1,7 @@
 #include "tokenizer.h"
 #include <iostream>
 #include <cstdlib>
+#include "error.h"
 
 std::vector<Token> Tokenizer::split (std::string str)
 {
@@ -66,8 +67,7 @@ std::vector<Token> Tokenizer::split (std::string str)
       while(isdigit(str[i]))  number+=str[i++];
       if (str[i]=='.') 
       {
-          std::cout<<"ERROR: Invalid float!" << std::endl;
-        exit (1);        
+        error_exit ("Invalid float!");        
       }
       result.push_back(Token(NUMERIC,number));
       i--;
@@ -84,14 +84,13 @@ std::vector<Token> Tokenizer::split (std::string str)
       }
       if (dot_counter>1) 
       {
-        std::cout<<"ERROR: Invalid float!" << std::endl;
-        exit (1);
+        error_exit ("Invalid float!");        
       }
       result.push_back(Token(NUMERIC,number));
       i--;
     }
     else 
-      std::cout<<"Unknown character"<<std::endl;
+      error_exit ("Unknown character");        
   }
   return result;
 }

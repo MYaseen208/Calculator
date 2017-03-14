@@ -1,10 +1,8 @@
-#include <iostream>
+#ifndef ERROR_EXIT_H
+#define ERROR_EXIT_H
+
 #include <string>
-#include <cstdlib>
 
-void error_exit(std::string str)
-{
-  std::cerr << "ERROR: " << str << std::endl;
-  exit (1);
-}
+void error_exit(std::string);
 
+#endif
