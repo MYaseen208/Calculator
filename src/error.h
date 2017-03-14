@@ -2,9 +2,9 @@
 #include <string>
 #include <cstdlib>
 
-void error_exit(std::string)
+void error_exit(std::string str)
 {
-  std::cerr << "ERROR: " << string << std::endl;
+  std::cerr << "ERROR: " << str << std::endl;
   exit (1);
 }
 

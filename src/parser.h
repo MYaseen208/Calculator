@@ -14,6 +14,7 @@ private:
   int counter = 0;
   std::vector<Token> tokens;
   double expression ();
+  double primary ();
   double factor ();
   double term ();
 };

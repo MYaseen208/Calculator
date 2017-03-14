@@ -66,7 +66,7 @@ std::vector<Token> Tokenizer::split (std::string str)
       while(isdigit(str[i]))  number+=str[i++];
       if (str[i]=='.') 
       {
-        cout<<"ERROR: Invalid float!" << std::endl;
+          std::cout<<"ERROR: Invalid float!" << std::endl;
         exit (1);        
       }
       result.push_back(Token(NUMERIC,number));
@@ -77,14 +77,14 @@ std::vector<Token> Tokenizer::split (std::string str)
     {
       int dot_counter=0; 
       std::string number;
-      while(isdigit(str[i]) || (str[i]=='.')){
+      while(isdigit(str[i]) || (str[i]=='.'))
       {
         if (str[i]=='.') dot_counter++;
         number+=str[i++];
       }
       if (dot_counter>1) 
       {
-        cout<<"ERROR: Invalid float!" << std::endl;
+        std::cout<<"ERROR: Invalid float!" << std::endl;
         exit (1);
       }
       result.push_back(Token(NUMERIC,number));

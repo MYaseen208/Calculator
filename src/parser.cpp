@@ -1,5 +1,7 @@
 #include "tokenizer.h"  
 #include "parser.h"
+#include <cmath>
+#include "error.h"
 
 double Parser::parse_line (const std::vector<Token> &t) {
   tokens = t;
@@ -8,6 +10,21 @@ double Parser::parse_line (const std::vector<Token> &t) {
 }
 
 double Parser::factor ()
+{
+  double result = primary ();
+  if (counter + 1 < tokens.size() && tokens[counter + 1].kind == POW)
+  {
+    counter += 2;
+    if (counter >= tokens.size())
+      error_exit("Syntax of power function incorrect!");
+    double exponent = primary();
+    return std::pow (result, exponent);
+  }
+  else
+    return result;
+}
+
+double Parser::primary ()
 {
   if (tokens[counter].kind == NUMERIC)
   {
@@ -84,5 +101,3 @@ double Parser::expression ()
   }
   return result;
 }
-
-
