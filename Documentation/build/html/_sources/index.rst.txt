@@ -19,6 +19,9 @@ Introduction
 Introduction
 -----------------
 
+**Calculator** is a C++ progamm to solve basic mathematical expressions. It can solve  basic mathematical expressions containing `+`, `-`, `*`, `/`, `**`, and `()`. The development version of the package is avialabe on [Github](https://github.com/MYaseen208/Calculator).
+
+
 This is the Introduction
 
 .. literalinclude:: Test.py
