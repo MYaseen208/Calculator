@@ -13,24 +13,32 @@ double Parser::factor ()
   {
     return stod (tokens[counter].val);
   }
-//  else if (tokens[counter].kind == '(')
-//   {
-//     counter++; // '('
-//     double result = expression(tokens);
-//     counter++; // ')'
-//     return result;
-//   }
+  else if (tokens[counter].kind == OPENPTS)
+  {
+    counter++;
+    return expression();
+  }
   else if (tokens[counter].kind == MINUS)
   {
     counter++;
-    return -stod (tokens[counter].val);
-//     counter++;
+    if (tokens[counter].kind == OPENPTS)
+    {
+      counter++;
+      return -expression();
+    }
+    else 
+      return -stod (tokens[counter].val);
   }
   else if (tokens[counter].kind == PLUS)
   {
     counter++;
-    return +stod (tokens[counter].val);
-//     counter++;
+    if (tokens[counter].kind == OPENPTS) 
+    {
+      counter++;
+      return +expression();
+    }
+    else
+      return +stod (tokens[counter].val);
   }
   else
     return 0; // error
