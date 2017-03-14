@@ -42,9 +42,11 @@ class Calculator:
 
     def equals(self):
         self.get()
+        self.expression=self.expression.replace('(','\(') # Because of echo!
+        self.expression=self.expression.replace(')','\)') # Because of echo!
         self.value= subprocess.check_output("echo {} | ./main.x".format(self.expression), shell=True)
         self.text_box.delete(0, Tk.END)
-        self.text_box.insert(0, self.value.split('\n')[0])
+        self.text_box.insert(0, self.value)
 
     def clearall(self):
         """Clearing the text box"""
