@@ -12,8 +12,11 @@ int main () {
   std::string line;
   while (!std::cin.eof()) {
     std::getline (std::cin, line);
-    std::vector<Token> res = tokenizer.split(line);
-    std::cout << "result: " << parser.parse_line(res) << std::endl;
+    if (!line.empty())
+    {
+      std::vector<Token> res = tokenizer.split(line);
+      std::cout << "result: " << parser.parse_line(res);
+    }
   }
   return 0;
 }
