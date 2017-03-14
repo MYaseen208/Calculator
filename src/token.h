@@ -3,7 +3,7 @@
 
 #include <string>
 
-enum Kind {NUMERIC,PLUS,MINUS,STAR,SLASH,IDENTIFIER};
+enum Kind {NUMERIC,PLUS,MINUS,STAR,SLASH,POW,IDENTIFIER};
 
 struct Token {
   Token (Kind k, std::string str) : kind(k), val(str) {}
