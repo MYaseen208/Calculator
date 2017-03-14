@@ -2,16 +2,20 @@
 #define Parser_h
 #include <string>
 #include "token.h"
+#include <iostream>
+
+using namespace std;
 
 class Parser {
 public:
-  int counter = 0;
-  double expression(const std::vector<Token>);
-  void inputing(const std::vector<Token>);
+  double parse_line(const std::vector<Token> &);
 private:
   
-  double factor(const std::vector<Token>);
-  double term(const std::vector<Token>);
+  int counter = 0;
+  std::vector<Token> tokens;
+  double expression ();
+  double factor ();
+  double term ();
 };
 
 #endif

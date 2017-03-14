@@ -8,12 +8,15 @@ using namespace std;
 
 int main () {
   Tokenizer tokenizer;
-  std::vector<Token> res = tokenizer.split("1+2*3");
- // for (Token token : res) {
- //   std::cout << token.val << std::endl;
- // }
-  Parser parse;
-  double result = parse.expression(res);
-  cout << result << endl;
+  Parser parser;
+  std::string line;
+  while (!std::cin.eof()) {
+    std::getline (std::cin, line);
+    std::vector<Token> res = tokenizer.split(line);
+    std::cout << "result: " << parser.parse_line(res) << std::endl;
+  }
+//   for (Token token : res) {
+//     std::cout << token.val << " is: " << token.kind << std::endl;
+//   }
   return 0;
 }

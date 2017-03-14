@@ -1,67 +1,80 @@
 #include "tokenizer.h"  
 #include "parser.h"
 
+double Parser::parse_line (const std::vector<Token> &t) {
+  tokens = t;
+  counter = 0;
+  return expression ();
+}
 
-double Parser::factor(std::vector<Token> res)
+double Parser::factor ()
 {
-  if (res[counter].kind == NUMERIC)
+  if (tokens[counter].kind == NUMERIC)
   {
-    return stod (res[counter].val);
+    return stod (tokens[counter].val);
   }
-//  else if (res[counter].kind == '(')
+//  else if (tokens[counter].kind == '(')
 //   {
 //     counter++; // '('
-//     double result = expression(res);
+//     double result = expression(tokens);
 //     counter++; // ')'
 //     return result;
 //   }
-  else if (res[counter].kind == MINUS)
+  else if (tokens[counter].kind == MINUS)
   {
     counter++;
-    return -expression(res);
+    return -stod (tokens[counter].val);
+//     counter++;
   }
-  else if (res[counter].kind == PLUS)
+  else if (tokens[counter].kind == PLUS)
   {
     counter++;
-    return +expression(res);
+    return +stod (tokens[counter].val);
+//     counter++;
   }
   else
     return 0; // error
 }
 
-double Parser::term(std::vector<Token> res)
+double Parser::term ()
 {
-  double result = factor(res);
+  double result = factor();
   counter++;
-  while (res[counter].kind == STAR || res[counter].kind == SLASH)
-    if (res[counter].kind == STAR)
+  while (counter<tokens.size()&&(tokens[counter].kind == STAR || tokens[counter].kind == SLASH))
+  {
+    if (tokens[counter].kind == STAR)
     {
       counter++;
-      result *= factor(res);
+      result *= factor();
+      counter++;
     }
     else
     {
       counter++;
-      result /= factor(res);
+      result /= factor();
+      counter++;
     }
+  }
   return result;
 }
 
-double Parser::expression(std::vector<Token> res)
+double Parser::expression ()
 {
-  double result = term(res);
-//   counter++;
-  while (res[counter].kind == PLUS || res[counter].kind == MINUS)
-    if (res[counter].kind == PLUS)
+  double result = term();
+  while (counter<tokens.size()&&(tokens[counter].kind == PLUS || tokens[counter].kind == MINUS))
+  {
+    if (tokens[counter].kind == PLUS)
     {
       counter++;
-      result += term(res);
+      result += term();
     }
     else
     {
       counter++;
-      result -= term(res);
+      result -= term();
     }
+  }
   return result;
 }
+
 
