@@ -11,6 +11,15 @@ Welcome to Calculator's documentation!
    :maxdepth: 2
    :caption: Contents:
 
++----------------------------+----------------------------+----------------------------+
+|.. figure:: LogoICTP.jpeg   |.. figure:: Calculator1.jpeg|.. figure:: LogoICTP.jpeg   |
+|    :width: 200px           |    :width: 200px           |    :width: 200px           |
+|    :align: center          |    :align: center          |    :align: center          |
+|    :height: 200px          |    :height: 200px          |    :height: 200px          |
+|    :alt: alternate text    |    :alt: alternate text    |    :alt: alternate text    |
+|    :figclass: align-center |    :figclass: align-center |    :figclass: align-center |
++----------------------------+----------------------------+----------------------------+
+
 
 
 Introduction
@@ -19,17 +28,35 @@ Introduction
 Introduction
 -----------------
 
-**Calculator** is a C++ progamm to solve basic mathematical expressions. It can solve  basic mathematical expressions containing `+`, `-`, `*`, `/`, `**`, and `()`. The development version of the package is avialabe on [Github](https://github.com/MYaseen208/Calculator).
+
+.. figure:: Calculator1.jpeg
+    :width: 200px
+    :align: center
+    :height: 200px
+    :alt: alternate text
+    :figclass: align-center    
+
+**Calculator** is a C++ progamm to solve basic mathematical expressions. It can solve  basic mathematical expressions containing ``+``, ``-``, ``*``, ``/``, ``**``, and ``()``. The development version of the package is available on `Github <https://github.com/MYaseen208/Calculator>`_.
 
 
-This is the Introduction
+Code for Main Function
+**********************
 
-.. literalinclude:: Test.py
+.. literalinclude:: main.cpp
 
 
-another test.
+Code for Tokenizer Function
+**********************
 
-.. literalinclude:: Test1.cpp
+.. literalinclude:: tokenizer.cpp
+
+
+Code for Parser Function
+**********************
+
+.. literalinclude:: parser.cpp
+
+
 
 
 Third test.

@@ -55,35 +55,187 @@
 \phantomsection\label{\detokenize{index::doc}}
 
 
+\noindent\begin{tabulary}{\linewidth}{|L|L|L|}
+\hline
+\begin{sphinxfigure-in-table}
+\centering
+
+\noindent\sphinxincludegraphics[width=200\sphinxpxdimen,height=200\sphinxpxdimen]{{LogoICTP}.jpeg}
+\end{sphinxfigure-in-table}\relax
+&\begin{sphinxfigure-in-table}
+\centering
+
+\noindent\sphinxincludegraphics[width=200\sphinxpxdimen,height=200\sphinxpxdimen]{{Calculator1}.jpeg}
+\end{sphinxfigure-in-table}\relax
+&\begin{sphinxfigure-in-table}
+\centering
+
+\noindent\sphinxincludegraphics[width=200\sphinxpxdimen,height=200\sphinxpxdimen]{{LogoICTP}.jpeg}
+\end{sphinxfigure-in-table}\relax
+\\
+\hline\end{tabulary}
+
+
 
 \chapter{Introduction}
-\label{\detokenize{index:welcome-to-calculator-s-documentation}}\label{\detokenize{index:introduction}}
+\label{\detokenize{index:introduction}}\label{\detokenize{index:welcome-to-calculator-s-documentation}}
 
 \section{Introduction}
-\label{\detokenize{index:id1}}
-This is the Introduction
+\label{\detokenize{index:id1}}\begin{figure}[htbp]
+\centering
 
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{l+m+mi}{3}\PYG{o}{+}\PYG{l+m+mi}{5}
-\PYG{n}{a} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{7}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{]}
-\PYG{n}{a}
-\PYG{n}{a}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
-\PYG{n}{a}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}
-\PYG{n}{a}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}
+\noindent\sphinxincludegraphics[width=200\sphinxpxdimen,height=200\sphinxpxdimen]{{Calculator1}.jpeg}
+\end{figure}
 
-\end{sphinxVerbatim}
+\sphinxstylestrong{Calculator} is a C++ progamm to solve basic mathematical expressions. It can solve  basic mathematical expressions containing \sphinxcode{+}, \sphinxcode{-}, \sphinxcode{*}, \sphinxcode{/}, \sphinxcode{**}, and \sphinxcode{()}. The development version of the package is available on \href{https://github.com/MYaseen208/Calculator}{Github}.
 
-another test.
 
+\subsection{Code for Main Function}
+\label{\detokenize{index:code-for-main-function}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{c+c1}{\PYGZsh{}include \PYGZlt{}iostream\PYGZgt{}}
+\PYG{c+c1}{\PYGZsh{}include \PYGZdq{}tokenizer.h\PYGZdq{}}
+\PYG{c+c1}{\PYGZsh{}include \PYGZdq{}parser.h\PYGZdq{}}
 
+\PYG{n}{using} \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{cout}\PYG{p}{;}
+\PYG{n}{using} \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{endl}\PYG{p}{;}
 \PYG{n}{using} \PYG{n}{namespace} \PYG{n}{std}\PYG{p}{;}
 
 \PYG{n+nb}{int} \PYG{n}{main} \PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-  \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Hello}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+  \PYG{n}{Tokenizer} \PYG{n}{tokenizer}\PYG{p}{;}
+  \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Token}\PYG{o}{\PYGZgt{}} \PYG{n}{res} \PYG{o}{=} \PYG{n}{tokenizer}\PYG{o}{.}\PYG{n}{split}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{1+2*3}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+ \PYG{o}{/}\PYG{o}{/} \PYG{k}{for} \PYG{p}{(}\PYG{n}{Token} \PYG{n}{token} \PYG{p}{:} \PYG{n}{res}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+ \PYG{o}{/}\PYG{o}{/}   \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{token}\PYG{o}{.}\PYG{n}{val} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{endl}\PYG{p}{;}
+ \PYG{o}{/}\PYG{o}{/} \PYG{p}{\PYGZcb{}}
+  \PYG{n}{Parser} \PYG{n}{parse}\PYG{p}{;}
+  \PYG{n}{double} \PYG{n}{result} \PYG{o}{=} \PYG{n}{parse}\PYG{o}{.}\PYG{n}{expression}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
+  \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{result} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
   \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
+
+\subsection{Code for Tokenizer Function}
+\label{\detokenize{index:code-for-tokenizer-function}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}include \PYGZdq{}tokenizer.h\PYGZdq{}}
+\PYG{c+c1}{\PYGZsh{}include \PYGZlt{}iostream\PYGZgt{}}
+
+\PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Token}\PYG{o}{\PYGZgt{}} \PYG{n}{Tokenizer}\PYG{p}{:}\PYG{p}{:}\PYG{n}{split} \PYG{p}{(}\PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{string} \PYG{n+nb}{str}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+  \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Token}\PYG{o}{\PYGZgt{}} \PYG{n}{result}\PYG{p}{;}
+  \PYG{k}{for} \PYG{p}{(}\PYG{n+nb}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n+nb}{str}\PYG{o}{.}\PYG{n}{length}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;} \PYG{o}{+}\PYG{o}{+}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{char} \PYG{n}{c} \PYG{o}{=} \PYG{n+nb}{str}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{p}{;}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{c}\PYG{o}{==}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{+}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+      \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{string} \PYG{n}{op}\PYG{p}{;}
+      \PYG{n}{op} \PYG{o}{+}\PYG{o}{=} \PYG{n}{c}\PYG{p}{;}
+      \PYG{n}{result}\PYG{o}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{Token}\PYG{p}{(}\PYG{n}{PLUS}\PYG{p}{,}\PYG{n}{op}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{c}\PYG{o}{==}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZhy{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+      \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{string} \PYG{n}{op}\PYG{p}{;}
+      \PYG{n}{op} \PYG{o}{+}\PYG{o}{=} \PYG{n}{c}\PYG{p}{;}
+      \PYG{n}{result}\PYG{o}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{Token}\PYG{p}{(}\PYG{n}{MINUS}\PYG{p}{,}\PYG{n}{op}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{c}\PYG{o}{==}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{*}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+      \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{string} \PYG{n}{op}\PYG{p}{;}
+      \PYG{n}{op} \PYG{o}{+}\PYG{o}{=} \PYG{n}{c}\PYG{p}{;}
+      \PYG{n}{result}\PYG{o}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{Token}\PYG{p}{(}\PYG{n}{STAR}\PYG{p}{,}\PYG{n}{op}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{c}\PYG{o}{==}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+      \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{string} \PYG{n}{op}\PYG{p}{;}
+      \PYG{n}{op} \PYG{o}{+}\PYG{o}{=} \PYG{n}{c}\PYG{p}{;}
+      \PYG{n}{result}\PYG{o}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{Token}\PYG{p}{(}\PYG{n}{SLASH}\PYG{p}{,}\PYG{n}{op}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{isblank}\PYG{p}{(}\PYG{n}{c}\PYG{p}{)}\PYG{p}{)} \PYG{k}{continue}\PYG{p}{;}
+    \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{isdigit}\PYG{p}{(}\PYG{n}{c}\PYG{p}{)}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+      \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{string} \PYG{n}{number}\PYG{p}{;}
+      \PYG{k}{while}\PYG{p}{(}\PYG{n}{isdigit}\PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{p}{)}\PYG{p}{)} \PYG{n}{number}\PYG{o}{+}\PYG{o}{=}\PYG{n+nb}{str}\PYG{p}{[}\PYG{n}{i}\PYG{o}{+}\PYG{o}{+}\PYG{p}{]}\PYG{p}{;}
+      \PYG{n}{result}\PYG{o}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{Token}\PYG{p}{(}\PYG{n}{NUMERIC}\PYG{p}{,}\PYG{n}{number}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+      \PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{else} 
+      \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{cout}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Unknown character}\PYG{l+s+s2}{\PYGZdq{}}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{endl}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{k}{return} \PYG{n}{result}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
+
+\subsection{Code for Parser Function}
+\label{\detokenize{index:code-for-parser-function}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}include \PYGZdq{}tokenizer.h\PYGZdq{}  }
+\PYG{c+c1}{\PYGZsh{}include \PYGZdq{}parser.h\PYGZdq{}}
+
+
+\PYG{n}{double} \PYG{n}{Parser}\PYG{p}{:}\PYG{p}{:}\PYG{n}{factor}\PYG{p}{(}\PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Token}\PYG{o}{\PYGZgt{}} \PYG{n}{res}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+  \PYG{k}{if} \PYG{p}{(}\PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{NUMERIC}\PYG{p}{)}
+  \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{stod} \PYG{p}{(}\PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{val}\PYG{p}{)}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+\PYG{o}{/}\PYG{o}{/}  \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{o}{/}\PYG{o}{/}   \PYG{p}{\PYGZob{}}
+\PYG{o}{/}\PYG{o}{/}     \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;} \PYG{o}{/}\PYG{o}{/} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{(}\PYG{l+s+s1}{\PYGZsq{}}
+\PYG{o}{/}\PYG{o}{/}     \PYG{n}{double} \PYG{n}{result} \PYG{o}{=} \PYG{n}{expression}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
+\PYG{o}{/}\PYG{o}{/}     \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;} \PYG{o}{/}\PYG{o}{/} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{)}\PYG{l+s+s1}{\PYGZsq{}}
+\PYG{o}{/}\PYG{o}{/}     \PYG{k}{return} \PYG{n}{result}\PYG{p}{;}
+\PYG{o}{/}\PYG{o}{/}   \PYG{p}{\PYGZcb{}}
+  \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{MINUS}\PYG{p}{)}
+  \PYG{p}{\PYGZob{}}
+    \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
+    \PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{n}{expression}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{PLUS}\PYG{p}{)}
+  \PYG{p}{\PYGZob{}}
+    \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
+    \PYG{k}{return} \PYG{o}{+}\PYG{n}{expression}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{k}{else}
+    \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{o}{/}\PYG{o}{/} \PYG{n}{error}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{double} \PYG{n}{Parser}\PYG{p}{:}\PYG{p}{:}\PYG{n}{term}\PYG{p}{(}\PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Token}\PYG{o}{\PYGZgt{}} \PYG{n}{res}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+  \PYG{n}{double} \PYG{n}{result} \PYG{o}{=} \PYG{n}{factor}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
+  \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
+  \PYG{k}{while} \PYG{p}{(}\PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{STAR} \PYG{o}{\textbar{}}\PYG{o}{\textbar{}} \PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{SLASH}\PYG{p}{)}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{STAR}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+      \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
+      \PYG{n}{result} \PYG{o}{*}\PYG{o}{=} \PYG{n}{factor}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{else}
+    \PYG{p}{\PYGZob{}}
+      \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
+      \PYG{n}{result} \PYG{o}{/}\PYG{o}{=} \PYG{n}{factor}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{k}{return} \PYG{n}{result}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{double} \PYG{n}{Parser}\PYG{p}{:}\PYG{p}{:}\PYG{n}{expression}\PYG{p}{(}\PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Token}\PYG{o}{\PYGZgt{}} \PYG{n}{res}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+  \PYG{n}{double} \PYG{n}{result} \PYG{o}{=} \PYG{n}{term}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
+\PYG{o}{/}\PYG{o}{/}   \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
+  \PYG{k}{while} \PYG{p}{(}\PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{PLUS} \PYG{o}{\textbar{}}\PYG{o}{\textbar{}} \PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{MINUS}\PYG{p}{)}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{PLUS}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+      \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
+      \PYG{n}{result} \PYG{o}{+}\PYG{o}{=} \PYG{n}{term}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{else}
+    \PYG{p}{\PYGZob{}}
+      \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
+      \PYG{n}{result} \PYG{o}{\PYGZhy{}}\PYG{o}{=} \PYG{n}{term}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{k}{return} \PYG{n}{result}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
 \end{sphinxVerbatim}
 
 Third test.
