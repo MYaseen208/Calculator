@@ -75,8 +75,7 @@ std::vector<Token> Tokenizer::split (std::string str)
       result.push_back(Token(NUMERIC,number));
       i--;
     }
-    else if (isblank(c)) continue;.
-// This block detect numbers from input.
+    else if (isblank(c)) continue;
     else if (isdigit(c))
     {
       int dot_counter=0; 
