@@ -1,12 +1,13 @@
-#By Ali & Geetha
-import Tkinter as Tk
+# By Geetha, Ali, Yaseen, Majid and Mortaza
+import Tkinter as Tk # Python2
+# import tkinter as Tk # Python3
 import subprocess
 
 
 class Calculator:
-
+    # Constructor for adding buttons
     def __init__(self, window):
-        window.title('Calculator By Geetha & Ali & Muhammad & Majid')
+        window.title('Calculator By Geetha, Ali, Yaseen, Majid and Mortaza')
         window.geometry()
         self.text_box = Tk.Entry(window, width=40, font="Noto 20 bold")
         self.text_box.grid(row=0, column=0, columnspan=6)
