@@ -41,7 +41,7 @@
 
 
 \title{Calculator Documentation}
-\date{Mar 14, 2017}
+\date{Mar 15, 2017}
 \release{0.1}
 \author{Muhammad Yaseen\\Geetha Rajadurai\\Ali Khozravi\\Majid Zeraati\\Mortaza Jalalvand}
 \newcommand{\sphinxlogo}{}
@@ -80,38 +80,112 @@
 \chapter{Introduction}
 \label{\detokenize{index:introduction}}\label{\detokenize{index:welcome-to-calculator-s-documentation}}
 
-\section{Introduction}
-\label{\detokenize{index:id1}}\begin{figure}[htbp]
+\section{GUI Class in Python}
+\label{\detokenize{index:gui-class-in-python}}\begin{figure}[htbp]
 \centering
 
-\noindent\sphinxincludegraphics[width=200\sphinxpxdimen,height=200\sphinxpxdimen]{{Calculator1}.jpeg}
+\noindent\sphinxincludegraphics[width=600\sphinxpxdimen,height=400\sphinxpxdimen]{{CalculatorPythonGUI}.png}
 \end{figure}
 
-\sphinxstylestrong{Calculator} is a C++ progamm to solve basic mathematical expressions. It can solve  basic mathematical expressions containing \sphinxcode{+}, \sphinxcode{-}, \sphinxcode{*}, \sphinxcode{/}, \sphinxcode{**}, and \sphinxcode{()}. The development version of the package is available on \href{https://github.com/MYaseen208/Calculator}{Github}.
+\sphinxstylestrong{Calculator} is a \sphinxcode{Python} GUI to visualise the C++ results. It can solve  basic mathematical expressions containing \sphinxcode{+}, \sphinxcode{-}, \sphinxcode{*}, \sphinxcode{/}, \sphinxcode{**}, and \sphinxcode{()}. The development version of the package is available on \href{https://github.com/MYaseen208/Calculator}{Github}.
+
+
+\subsection{Python Code for GUI Calculator}
+\label{\detokenize{index:python-code-for-gui-calculator}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} By Geetha, Ali, Yaseen, Majid and Mortaza}
+\PYG{c+c1}{\PYGZsh{} import Tkinter as Tk \PYGZsh{} Python2}
+\PYG{k+kn}{import} \PYG{n+nn}{tkinter} \PYG{k}{as} \PYG{n+nn}{Tk} \PYG{c+c1}{\PYGZsh{} Python3}
+\PYG{k+kn}{import} \PYG{n+nn}{subprocess}
+
+
+\PYG{k}{class} \PYG{n+nc}{Calculator}\PYG{p}{:}
+    \PYG{c+c1}{\PYGZsh{} Constructor for adding buttons}
+    \PYG{k}{def} \PYG{n+nf}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{window}\PYG{p}{)}\PYG{p}{:}
+        \PYG{n}{window}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Calculator By Geetha, Ali, Yaseen, Majid and Mortaza}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{window}\PYG{o}{.}\PYG{n}{geometry}\PYG{p}{(}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{text\PYGZus{}box} \PYG{o}{=} \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Entry}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,} \PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{40}\PYG{p}{,} \PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 20 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{text\PYGZus{}box}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{columnspan}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{text\PYGZus{}box}\PYG{o}{.}\PYG{n}{focus\PYGZus{}set}\PYG{p}{(}\PYG{p}{)}
+        \PYG{c+c1}{\PYGZsh{} Buttons}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{+}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{action}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{+}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{)}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{*}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{action}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{*}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{)}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZhy{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{action}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZhy{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{)}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{/}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{action}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{)}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{7}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{action}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{7}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{8}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{action}\PYG{p}{(}\PYG{l+m+mi}{8}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{9}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{action}\PYG{p}{(}\PYG{l+m+mi}{9}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{)}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{4}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{action}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{5}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{action}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{6}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{action}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{)}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{1}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{action}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{2}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{action}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{3}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{action}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{)}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{0}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{action}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{.}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{action}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{.}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{action}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{)}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{)}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{action}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{)}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{equals}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{)}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZca{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{action}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZca{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{)}
+        \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Button}\PYG{p}{(}\PYG{n}{window}\PYG{p}{,}\PYG{n}{text}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Clear}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{font}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Noto 10 bold}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{width}\PYG{o}{=}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{n}{height}\PYG{o}{=}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{command}\PYG{o}{=}\PYG{k}{lambda}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{clearall}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{(}\PYG{n}{row}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{n}{column}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{)}
+    
+    \PYG{k}{def} \PYG{n+nf}{action}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{arg}\PYG{p}{)}\PYG{p}{:}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Attaching button\PYGZsq{}s value to end of the text box\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{text\PYGZus{}box}\PYG{o}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{n}{Tk}\PYG{o}{.}\PYG{n}{END}\PYG{p}{,} \PYG{n}{arg}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{get}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{)}\PYG{p}{:}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Getting expression from c++ code\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{expression} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{text\PYGZus{}box}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{equals}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{)}\PYG{p}{:}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{expression}\PYG{o}{=}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{expression}\PYG{o}{.}\PYG{n}{replace}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} Because of echo!}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{expression}\PYG{o}{=}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{expression}\PYG{o}{.}\PYG{n}{replace}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZbs{}}\PYG{l+s+s1}{)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} Because of echo!}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{value}\PYG{o}{=} \PYG{n}{subprocess}\PYG{o}{.}\PYG{n}{check\PYGZus{}output}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{echo }\PYG{l+s+si}{\PYGZob{}\PYGZcb{}}\PYG{l+s+s2}{ \textbar{} ./main.x}\PYG{l+s+s2}{\PYGZdq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{expression}\PYG{p}{)}\PYG{p}{,} \PYG{n}{shell}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{text\PYGZus{}box}\PYG{o}{.}\PYG{n}{delete}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{END}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{text\PYGZus{}box}\PYG{o}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{value}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{clearall}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{)}\PYG{p}{:}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Clearing the text box\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{text\PYGZus{}box}\PYG{o}{.}\PYG{n}{delete}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{END}\PYG{p}{)}
+
+
+\PYG{n}{window} \PYG{o}{=} \PYG{n}{Tk}\PYG{o}{.}\PYG{n}{Tk}\PYG{p}{(}\PYG{p}{)}
+\PYG{n}{ob} \PYG{o}{=} \PYG{n}{Calculator}\PYG{p}{(}\PYG{n}{window}\PYG{p}{)}
+\PYG{n}{window}\PYG{o}{.}\PYG{n}{mainloop}\PYG{p}{(}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+
+\section{Calculator in C++}
+\label{\detokenize{index:calculator-in-c}}
+\sphinxstylestrong{Calculator} is a \sphinxcode{C++} progamm to solve basic mathematical expressions. It can solve  basic mathematical expressions containing \sphinxcode{+}, \sphinxcode{-}, \sphinxcode{*}, \sphinxcode{/}, \sphinxcode{**}, and \sphinxcode{()}. The development version of the package is available on \href{https://github.com/MYaseen208/Calculator}{Github}.
 
 
 \subsection{Code for Main Function}
 \label{\detokenize{index:code-for-main-function}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{c+c1}{\PYGZsh{}include \PYGZlt{}iostream\PYGZgt{}}
-\PYG{c+c1}{\PYGZsh{}include \PYGZdq{}tokenizer.h\PYGZdq{}}
-\PYG{c+c1}{\PYGZsh{}include \PYGZdq{}parser.h\PYGZdq{}}
+\PYGZsh{}include \PYGZlt{}iostream\PYGZgt{}
+\PYGZsh{}include \PYGZdq{}tokenizer.h\PYGZdq{}
+\PYGZsh{}include \PYGZdq{}parser.h\PYGZdq{}
 
-\PYG{n}{using} \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{cout}\PYG{p}{;}
-\PYG{n}{using} \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{endl}\PYG{p}{;}
-\PYG{n}{using} \PYG{n}{namespace} \PYG{n}{std}\PYG{p}{;}
+using std::cout;
+using std::endl;
+using namespace std;
 
-\PYG{n+nb}{int} \PYG{n}{main} \PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-  \PYG{n}{Tokenizer} \PYG{n}{tokenizer}\PYG{p}{;}
-  \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Token}\PYG{o}{\PYGZgt{}} \PYG{n}{res} \PYG{o}{=} \PYG{n}{tokenizer}\PYG{o}{.}\PYG{n}{split}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{1+2*3}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
- \PYG{o}{/}\PYG{o}{/} \PYG{k}{for} \PYG{p}{(}\PYG{n}{Token} \PYG{n}{token} \PYG{p}{:} \PYG{n}{res}\PYG{p}{)} \PYG{p}{\PYGZob{}}
- \PYG{o}{/}\PYG{o}{/}   \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{token}\PYG{o}{.}\PYG{n}{val} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{endl}\PYG{p}{;}
- \PYG{o}{/}\PYG{o}{/} \PYG{p}{\PYGZcb{}}
-  \PYG{n}{Parser} \PYG{n}{parse}\PYG{p}{;}
-  \PYG{n}{double} \PYG{n}{result} \PYG{o}{=} \PYG{n}{parse}\PYG{o}{.}\PYG{n}{expression}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
-  \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{result} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
-  \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}
+int main () \PYGZob{}
+  Tokenizer tokenizer;
+  Parser parser;
+  std::string line;
+  while (!std::cin.eof()) \PYGZob{}
+    std::getline (std::cin, line);
+    if (!line.empty())
+    \PYGZob{}
+      std::vector\PYGZlt{}Token\PYGZgt{} res = tokenizer.split(line);
+      std::cout \PYGZlt{}\PYGZlt{} \PYGZdq{}result: \PYGZdq{} \PYGZlt{}\PYGZlt{} parser.parse\PYGZus{}line(res);
+    \PYGZcb{}
+  \PYGZcb{}
+  return 0;
+\PYGZcb{}
 \end{sphinxVerbatim}
 
 
@@ -120,6 +194,8 @@
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{c+c1}{\PYGZsh{}include \PYGZdq{}tokenizer.h\PYGZdq{}}
 \PYG{c+c1}{\PYGZsh{}include \PYGZlt{}iostream\PYGZgt{}}
+\PYG{c+c1}{\PYGZsh{}include \PYGZlt{}cstdlib\PYGZgt{}}
+\PYG{c+c1}{\PYGZsh{}include \PYGZdq{}error.h\PYGZdq{}}
 
 \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Token}\PYG{o}{\PYGZgt{}} \PYG{n}{Tokenizer}\PYG{p}{:}\PYG{p}{:}\PYG{n}{split} \PYG{p}{(}\PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{string} \PYG{n+nb}{str}\PYG{p}{)}
 \PYG{p}{\PYGZob{}}
@@ -141,8 +217,23 @@
     \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{c}\PYG{o}{==}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{*}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
     \PYG{p}{\PYGZob{}}
       \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{string} \PYG{n}{op}\PYG{p}{;}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{[}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{==}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{*}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} 
+      \PYG{p}{\PYGZob{}}
+        \PYG{n}{op}\PYG{o}{+}\PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZca{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{;}
+        \PYG{n}{result}\PYG{o}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{Token}\PYG{p}{(}\PYG{n}{POW}\PYG{p}{,}\PYG{n}{op}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+        \PYG{n}{i}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{k}{else}  
+      \PYG{p}{\PYGZob{}}
+        \PYG{n}{op}\PYG{o}{+}\PYG{o}{=} \PYG{n}{c}\PYG{p}{;}
+        \PYG{n}{result}\PYG{o}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{Token}\PYG{p}{(}\PYG{n}{STAR}\PYG{p}{,}\PYG{n}{op}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{c}\PYG{o}{==}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZca{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+      \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{string} \PYG{n}{op}\PYG{p}{;}
       \PYG{n}{op} \PYG{o}{+}\PYG{o}{=} \PYG{n}{c}\PYG{p}{;}
-      \PYG{n}{result}\PYG{o}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{Token}\PYG{p}{(}\PYG{n}{STAR}\PYG{p}{,}\PYG{n}{op}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+      \PYG{n}{result}\PYG{o}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{Token}\PYG{p}{(}\PYG{n}{POW}\PYG{p}{,}\PYG{n}{op}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
     \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{c}\PYG{o}{==}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
     \PYG{p}{\PYGZob{}}
@@ -150,19 +241,54 @@
       \PYG{n}{op} \PYG{o}{+}\PYG{o}{=} \PYG{n}{c}\PYG{p}{;}
       \PYG{n}{result}\PYG{o}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{Token}\PYG{p}{(}\PYG{n}{SLASH}\PYG{p}{,}\PYG{n}{op}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
+    \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{c}\PYG{o}{==}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}   
+      \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{string} \PYG{n}{op}\PYG{p}{;} 
+      \PYG{n}{op} \PYG{o}{+}\PYG{o}{=} \PYG{n}{c}\PYG{p}{;}
+      \PYG{n}{result}\PYG{o}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{Token}\PYG{p}{(}\PYG{n}{OPENPTS}\PYG{p}{,}\PYG{n}{op}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{c}\PYG{o}{==}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}   
+      \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{string} \PYG{n}{op}\PYG{p}{;} 
+      \PYG{n}{op} \PYG{o}{+}\PYG{o}{=} \PYG{n}{c}\PYG{p}{;}
+      \PYG{n}{result}\PYG{o}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{Token}\PYG{p}{(}\PYG{n}{CLOSEPTS}\PYG{p}{,}\PYG{n}{op}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{else} \PYG{k}{if}  \PYG{p}{(}\PYG{n}{c}\PYG{o}{==}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{.}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+      \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{string} \PYG{n}{number}\PYG{p}{;}
+      \PYG{n}{number} \PYG{o}{+}\PYG{o}{=} \PYG{n+nb}{str}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{p}{;}
+      \PYG{n}{i}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
+      \PYG{k}{while}\PYG{p}{(}\PYG{n}{isdigit}\PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{p}{)}\PYG{p}{)}  \PYG{n}{number}\PYG{o}{+}\PYG{o}{=}\PYG{n+nb}{str}\PYG{p}{[}\PYG{n}{i}\PYG{o}{+}\PYG{o}{+}\PYG{p}{]}\PYG{p}{;}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{==}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{.}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} 
+      \PYG{p}{\PYGZob{}}
+        \PYG{n}{error\PYGZus{}exit} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Invalid float!}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}        
+      \PYG{p}{\PYGZcb{}}
+      \PYG{n}{result}\PYG{o}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{Token}\PYG{p}{(}\PYG{n}{NUMERIC}\PYG{p}{,}\PYG{n}{number}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+      \PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
     \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{isblank}\PYG{p}{(}\PYG{n}{c}\PYG{p}{)}\PYG{p}{)} \PYG{k}{continue}\PYG{p}{;}
     \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{isdigit}\PYG{p}{(}\PYG{n}{c}\PYG{p}{)}\PYG{p}{)}
     \PYG{p}{\PYGZob{}}
+      \PYG{n+nb}{int} \PYG{n}{dot\PYGZus{}counter}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} 
       \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{string} \PYG{n}{number}\PYG{p}{;}
-      \PYG{k}{while}\PYG{p}{(}\PYG{n}{isdigit}\PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{p}{)}\PYG{p}{)} \PYG{n}{number}\PYG{o}{+}\PYG{o}{=}\PYG{n+nb}{str}\PYG{p}{[}\PYG{n}{i}\PYG{o}{+}\PYG{o}{+}\PYG{p}{]}\PYG{p}{;}
+      \PYG{k}{while}\PYG{p}{(}\PYG{n}{isdigit}\PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{p}{)} \PYG{o}{\textbar{}}\PYG{o}{\textbar{}} \PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{==}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{.}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{)}
+      \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{==}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{.}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{n}{dot\PYGZus{}counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
+        \PYG{n}{number}\PYG{o}{+}\PYG{o}{=}\PYG{n+nb}{str}\PYG{p}{[}\PYG{n}{i}\PYG{o}{+}\PYG{o}{+}\PYG{p}{]}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n}{dot\PYGZus{}counter}\PYG{o}{\PYGZgt{}}\PYG{l+m+mi}{1}\PYG{p}{)} 
+      \PYG{p}{\PYGZob{}}
+        \PYG{n}{error\PYGZus{}exit} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Invalid float!}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}        
+      \PYG{p}{\PYGZcb{}}
       \PYG{n}{result}\PYG{o}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{Token}\PYG{p}{(}\PYG{n}{NUMERIC}\PYG{p}{,}\PYG{n}{number}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
       \PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
     \PYG{k}{else} 
-      \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{cout}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Unknown character}\PYG{l+s+s2}{\PYGZdq{}}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{endl}\PYG{p}{;}
+      \PYG{n}{error\PYGZus{}exit} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Unknown character}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}        
   \PYG{p}{\PYGZcb{}}
   \PYG{k}{return} \PYG{n}{result}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
+
 \end{sphinxVerbatim}
 
 
@@ -171,78 +297,108 @@
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{c+c1}{\PYGZsh{}include \PYGZdq{}tokenizer.h\PYGZdq{}  }
 \PYG{c+c1}{\PYGZsh{}include \PYGZdq{}parser.h\PYGZdq{}}
+\PYG{c+c1}{\PYGZsh{}include \PYGZlt{}cmath\PYGZgt{}}
+\PYG{c+c1}{\PYGZsh{}include \PYGZdq{}error.h\PYGZdq{}}
 
+\PYG{n}{double} \PYG{n}{Parser}\PYG{p}{:}\PYG{p}{:}\PYG{n}{parse\PYGZus{}line} \PYG{p}{(}\PYG{n}{const} \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Token}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZam{}}\PYG{n}{t}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{n}{tokens} \PYG{o}{=} \PYG{n}{t}\PYG{p}{;}
+  \PYG{n}{counter} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+  \PYG{k}{return} \PYG{n}{expression} \PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
 
-\PYG{n}{double} \PYG{n}{Parser}\PYG{p}{:}\PYG{p}{:}\PYG{n}{factor}\PYG{p}{(}\PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Token}\PYG{o}{\PYGZgt{}} \PYG{n}{res}\PYG{p}{)}
+\PYG{n}{double} \PYG{n}{Parser}\PYG{p}{:}\PYG{p}{:}\PYG{n}{factor} \PYG{p}{(}\PYG{p}{)}
 \PYG{p}{\PYGZob{}}
-  \PYG{k}{if} \PYG{p}{(}\PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{NUMERIC}\PYG{p}{)}
+  \PYG{n}{double} \PYG{n}{result} \PYG{o}{=} \PYG{n}{primary} \PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+  \PYG{k}{if} \PYG{p}{(}\PYG{n}{counter} \PYG{o}{+} \PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}} \PYG{n}{tokens}\PYG{o}{.}\PYG{n}{size}\PYG{p}{(}\PYG{p}{)} \PYG{o}{\PYGZam{}}\PYG{o}{\PYGZam{}} \PYG{n}{tokens}\PYG{p}{[}\PYG{n}{counter} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{POW}\PYG{p}{)}
   \PYG{p}{\PYGZob{}}
-    \PYG{k}{return} \PYG{n}{stod} \PYG{p}{(}\PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{val}\PYG{p}{)}\PYG{p}{;}
+    \PYG{n}{counter} \PYG{o}{+}\PYG{o}{=} \PYG{l+m+mi}{2}\PYG{p}{;}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{counter} \PYG{o}{\PYGZgt{}}\PYG{o}{=} \PYG{n}{tokens}\PYG{o}{.}\PYG{n}{size}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
+      \PYG{n}{error\PYGZus{}exit}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Syntax of power function incorrect!}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+    \PYG{n}{double} \PYG{n}{exponent} \PYG{o}{=} \PYG{n}{primary}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+    \PYG{k}{return} \PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n+nb}{pow} \PYG{p}{(}\PYG{n}{result}\PYG{p}{,} \PYG{n}{exponent}\PYG{p}{)}\PYG{p}{;}
   \PYG{p}{\PYGZcb{}}
-\PYG{o}{/}\PYG{o}{/}  \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
-\PYG{o}{/}\PYG{o}{/}   \PYG{p}{\PYGZob{}}
-\PYG{o}{/}\PYG{o}{/}     \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;} \PYG{o}{/}\PYG{o}{/} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{(}\PYG{l+s+s1}{\PYGZsq{}}
-\PYG{o}{/}\PYG{o}{/}     \PYG{n}{double} \PYG{n}{result} \PYG{o}{=} \PYG{n}{expression}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
-\PYG{o}{/}\PYG{o}{/}     \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;} \PYG{o}{/}\PYG{o}{/} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{)}\PYG{l+s+s1}{\PYGZsq{}}
-\PYG{o}{/}\PYG{o}{/}     \PYG{k}{return} \PYG{n}{result}\PYG{p}{;}
-\PYG{o}{/}\PYG{o}{/}   \PYG{p}{\PYGZcb{}}
-  \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{MINUS}\PYG{p}{)}
+  \PYG{k}{else}
+    \PYG{k}{return} \PYG{n}{result}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{double} \PYG{n}{Parser}\PYG{p}{:}\PYG{p}{:}\PYG{n}{primary} \PYG{p}{(}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+  \PYG{k}{if} \PYG{p}{(}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{NUMERIC}\PYG{p}{)}
+  \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{stod} \PYG{p}{(}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{val}\PYG{p}{)}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{OPENPTS}\PYG{p}{)}
   \PYG{p}{\PYGZob{}}
     \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
-    \PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{n}{expression}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
+    \PYG{k}{return} \PYG{n}{expression}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
   \PYG{p}{\PYGZcb{}}
-  \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{PLUS}\PYG{p}{)}
+  \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{MINUS}\PYG{p}{)}
   \PYG{p}{\PYGZob{}}
     \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
-    \PYG{k}{return} \PYG{o}{+}\PYG{n}{expression}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{OPENPTS}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+      \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
+      \PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{n}{expression}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{else} 
+      \PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{n}{stod} \PYG{p}{(}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{val}\PYG{p}{)}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{PLUS}\PYG{p}{)}
+  \PYG{p}{\PYGZob{}}
+    \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{OPENPTS}\PYG{p}{)} 
+    \PYG{p}{\PYGZob{}}
+      \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
+      \PYG{k}{return} \PYG{o}{+}\PYG{n}{expression}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{else}
+      \PYG{k}{return} \PYG{o}{+}\PYG{n}{stod} \PYG{p}{(}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{val}\PYG{p}{)}\PYG{p}{;}
   \PYG{p}{\PYGZcb{}}
   \PYG{k}{else}
     \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{o}{/}\PYG{o}{/} \PYG{n}{error}
 \PYG{p}{\PYGZcb{}}
 
-\PYG{n}{double} \PYG{n}{Parser}\PYG{p}{:}\PYG{p}{:}\PYG{n}{term}\PYG{p}{(}\PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Token}\PYG{o}{\PYGZgt{}} \PYG{n}{res}\PYG{p}{)}
+\PYG{n}{double} \PYG{n}{Parser}\PYG{p}{:}\PYG{p}{:}\PYG{n}{term} \PYG{p}{(}\PYG{p}{)}
 \PYG{p}{\PYGZob{}}
-  \PYG{n}{double} \PYG{n}{result} \PYG{o}{=} \PYG{n}{factor}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
+  \PYG{n}{double} \PYG{n}{result} \PYG{o}{=} \PYG{n}{factor}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
   \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
-  \PYG{k}{while} \PYG{p}{(}\PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{STAR} \PYG{o}{\textbar{}}\PYG{o}{\textbar{}} \PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{SLASH}\PYG{p}{)}
-    \PYG{k}{if} \PYG{p}{(}\PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{STAR}\PYG{p}{)}
+  \PYG{k}{while} \PYG{p}{(}\PYG{n}{counter}\PYG{o}{\PYGZlt{}}\PYG{n}{tokens}\PYG{o}{.}\PYG{n}{size}\PYG{p}{(}\PYG{p}{)}\PYG{o}{\PYGZam{}}\PYG{o}{\PYGZam{}}\PYG{p}{(}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{STAR} \PYG{o}{\textbar{}}\PYG{o}{\textbar{}} \PYG{n}{tokens}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{SLASH}\PYG{p}{)}\PYG{p}{)}
+  \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{STAR}\PYG{p}{)}
     \PYG{p}{\PYGZob{}}
       \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
-      \PYG{n}{result} \PYG{o}{*}\PYG{o}{=} \PYG{n}{factor}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
+      \PYG{n}{result} \PYG{o}{*}\PYG{o}{=} \PYG{n}{factor}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+      \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
     \PYG{k}{else}
     \PYG{p}{\PYGZob{}}
       \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
-      \PYG{n}{result} \PYG{o}{/}\PYG{o}{=} \PYG{n}{factor}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
+      \PYG{n}{result} \PYG{o}{/}\PYG{o}{=} \PYG{n}{factor}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+      \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
+  \PYG{p}{\PYGZcb{}}
   \PYG{k}{return} \PYG{n}{result}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 
-\PYG{n}{double} \PYG{n}{Parser}\PYG{p}{:}\PYG{p}{:}\PYG{n}{expression}\PYG{p}{(}\PYG{n}{std}\PYG{p}{:}\PYG{p}{:}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Token}\PYG{o}{\PYGZgt{}} \PYG{n}{res}\PYG{p}{)}
+\PYG{n}{double} \PYG{n}{Parser}\PYG{p}{:}\PYG{p}{:}\PYG{n}{expression} \PYG{p}{(}\PYG{p}{)}
 \PYG{p}{\PYGZob{}}
-  \PYG{n}{double} \PYG{n}{result} \PYG{o}{=} \PYG{n}{term}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
-\PYG{o}{/}\PYG{o}{/}   \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
-  \PYG{k}{while} \PYG{p}{(}\PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{PLUS} \PYG{o}{\textbar{}}\PYG{o}{\textbar{}} \PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{MINUS}\PYG{p}{)}
-    \PYG{k}{if} \PYG{p}{(}\PYG{n}{res}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{PLUS}\PYG{p}{)}
+  \PYG{n}{double} \PYG{n}{result} \PYG{o}{=} \PYG{n}{term}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+  \PYG{k}{while} \PYG{p}{(}\PYG{n}{counter}\PYG{o}{\PYGZlt{}}\PYG{n}{tokens}\PYG{o}{.}\PYG{n}{size}\PYG{p}{(}\PYG{p}{)}\PYG{o}{\PYGZam{}}\PYG{o}{\PYGZam{}}\PYG{p}{(}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{PLUS} \PYG{o}{\textbar{}}\PYG{o}{\textbar{}} \PYG{n}{tokens}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{MINUS}\PYG{p}{)}\PYG{p}{)}
+  \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{counter}\PYG{p}{]}\PYG{o}{.}\PYG{n}{kind} \PYG{o}{==} \PYG{n}{PLUS}\PYG{p}{)}
     \PYG{p}{\PYGZob{}}
       \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
-      \PYG{n}{result} \PYG{o}{+}\PYG{o}{=} \PYG{n}{term}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
+      \PYG{n}{result} \PYG{o}{+}\PYG{o}{=} \PYG{n}{term}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
     \PYG{k}{else}
     \PYG{p}{\PYGZob{}}
       \PYG{n}{counter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{;}
-      \PYG{n}{result} \PYG{o}{\PYGZhy{}}\PYG{o}{=} \PYG{n}{term}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}\PYG{p}{;}
+      \PYG{n}{result} \PYG{o}{\PYGZhy{}}\PYG{o}{=} \PYG{n}{term}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
+  \PYG{p}{\PYGZcb{}}
   \PYG{k}{return} \PYG{n}{result}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
-
 \end{sphinxVerbatim}
-
-Third test.
-\begin{equation*}
-\begin{split}\frac{ \sum_{t=0}^{N}f(t,k) }{N}\end{split}
-\end{equation*}
-and inline math \(\frac{ \sum_{t=0}^{N}f(t,k) }{N}\).
 
 
 \chapter{Indices and tables}
