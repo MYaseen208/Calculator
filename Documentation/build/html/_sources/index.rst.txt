@@ -25,18 +25,33 @@ Welcome to Calculator's documentation!
 Introduction
 ==================
 
-Introduction
------------------
+GUI Class in Python
+-------------------
 
 
-.. figure:: Calculator1.jpeg
-    :width: 200px
+.. figure:: CalculatorPythonGUI.png
+    :width: 600px
     :align: center
-    :height: 200px
+    :height: 400px
     :alt: alternate text
     :figclass: align-center    
 
-**Calculator** is a C++ progamm to solve basic mathematical expressions. It can solve  basic mathematical expressions containing ``+``, ``-``, ``*``, ``/``, ``**``, and ``()``. The development version of the package is available on `Github <https://github.com/MYaseen208/Calculator>`_.
+**Calculator** is a ``Python`` GUI to visualise the C++ results. It can solve  basic mathematical expressions containing ``+``, ``-``, ``*``, ``/``, ``**``, and ``()``. The development version of the package is available on `Github <https://github.com/MYaseen208/Calculator>`_.
+
+
+
+Python Code for GUI Calculator
+******************************
+
+.. literalinclude:: gui.py
+
+
+
+Calculator in C++
+------------------------
+
+
+**Calculator** is a ``C++`` progamm to solve basic mathematical expressions. It can solve  basic mathematical expressions containing ``+``, ``-``, ``*``, ``/``, ``**``, and ``()``. The development version of the package is available on `Github <https://github.com/MYaseen208/Calculator>`_.
 
 
 Code for Main Function
@@ -57,16 +72,6 @@ Code for Parser Function
 .. literalinclude:: parser.cpp
 
 
-
-
-Third test.
-
-.. math::
-
-   \frac{ \sum_{t=0}^{N}f(t,k) }{N}
-   
-   
-and inline math :math:`\frac{ \sum_{t=0}^{N}f(t,k) }{N}`.
 
 
 Indices and tables

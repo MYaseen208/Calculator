@@ -45,33 +45,105 @@
 </div>
 <div class="section" id="introduction">
 <h1>Introduction</h1>
-<div class="section" id="id1">
-<h2>Introduction</h2>
+<div class="section" id="gui-class-in-python">
+<h2>GUI Class in Python</h2>
 <div class="align-center figure">
-<img alt="alternate text" src="_images/Calculator1.jpeg" style="width: 200px; height: 200px;" />
+<img alt="alternate text" src="_images/CalculatorPythonGUI.png" style="width: 600px; height: 400px;" />
 </div>
-<p><strong>Calculator</strong> is a C++ progamm to solve basic mathematical expressions. It can solve  basic mathematical expressions containing <code class="docutils literal"><span class="pre">+</span></code>, <code class="docutils literal"><span class="pre">-</span></code>, <code class="docutils literal"><span class="pre">*</span></code>, <code class="docutils literal"><span class="pre">/</span></code>, <code class="docutils literal"><span class="pre">**</span></code>, and <code class="docutils literal"><span class="pre">()</span></code>. The development version of the package is available on <a class="reference external" href="https://github.com/MYaseen208/Calculator">Github</a><span class="link-target"> [https://github.com/MYaseen208/Calculator]</span>.</p>
+<p><strong>Calculator</strong> is a <code class="docutils literal"><span class="pre">Python</span></code> GUI to visualise the C++ results. It can solve  basic mathematical expressions containing <code class="docutils literal"><span class="pre">+</span></code>, <code class="docutils literal"><span class="pre">-</span></code>, <code class="docutils literal"><span class="pre">*</span></code>, <code class="docutils literal"><span class="pre">/</span></code>, <code class="docutils literal"><span class="pre">**</span></code>, and <code class="docutils literal"><span class="pre">()</span></code>. The development version of the package is available on <a class="reference external" href="https://github.com/MYaseen208/Calculator">Github</a><span class="link-target"> [https://github.com/MYaseen208/Calculator]</span>.</p>
+<div class="section" id="python-code-for-gui-calculator">
+<h3>Python Code for GUI Calculator</h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># By Geetha, Ali, Yaseen, Majid and Mortaza</span>
+<span class="c1"># import Tkinter as Tk # Python2</span>
+<span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">Tk</span> <span class="c1"># Python3</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+
+<span class="k">class</span> <span class="nc">Calculator</span><span class="p">:</span>
+    <span class="c1"># Constructor for adding buttons</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window</span><span class="p">):</span>
+        <span class="n">window</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Calculator By Geetha, Ali, Yaseen, Majid and Mortaza&#39;</span><span class="p">)</span>
+        <span class="n">window</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_box</span> <span class="o">=</span> <span class="n">Tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 20 bold&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_box</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_box</span><span class="o">.</span><span class="n">focus_set</span><span class="p">()</span>
+        <span class="c1"># Buttons</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;+&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;7&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="s1">&#39;7&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;8&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;9&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;4&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;5&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;6&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;(&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;)&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;=&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">equals</span><span class="p">())</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;^&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="s1">&#39;^&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">Tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Clear&#39;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto 10 bold&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">clearall</span><span class="p">())</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Attaching button&#39;s value to end of the text box&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_box</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">Tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Getting expression from c++ code&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">expression</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_box</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">equals</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">expression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">expression</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="p">,</span><span class="s1">&#39;\(&#39;</span><span class="p">)</span> <span class="c1"># Because of echo!</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">expression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">expression</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="p">,</span><span class="s1">&#39;\)&#39;</span><span class="p">)</span> <span class="c1"># Because of echo!</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span><span class="s2">&quot;echo </span><span class="si">{}</span><span class="s2"> | ./main.x&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">expression</span><span class="p">),</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_box</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_box</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">clearall</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Clearing the text box&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_box</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+
+
+<span class="n">window</span> <span class="o">=</span> <span class="n">Tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">ob</span> <span class="o">=</span> <span class="n">Calculator</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+<span class="n">window</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="calculator-in-c">
+<h2>Calculator in C++</h2>
+<p><strong>Calculator</strong> is a <code class="docutils literal"><span class="pre">C++</span></code> progamm to solve basic mathematical expressions. It can solve  basic mathematical expressions containing <code class="docutils literal"><span class="pre">+</span></code>, <code class="docutils literal"><span class="pre">-</span></code>, <code class="docutils literal"><span class="pre">*</span></code>, <code class="docutils literal"><span class="pre">/</span></code>, <code class="docutils literal"><span class="pre">**</span></code>, and <code class="docutils literal"><span class="pre">()</span></code>. The development version of the package is available on <a class="reference external" href="https://github.com/MYaseen208/Calculator">Github</a><span class="link-target"> [https://github.com/MYaseen208/Calculator]</span>.</p>
 <div class="section" id="code-for-main-function">
 <h3>Code for Main Function</h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#include &lt;iostream&gt;</span>
-<span class="c1">#include &quot;tokenizer.h&quot;</span>
-<span class="c1">#include &quot;parser.h&quot;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>#include &lt;iostream&gt;
+#include &quot;tokenizer.h&quot;
+#include &quot;parser.h&quot;
 
-<span class="n">using</span> <span class="n">std</span><span class="p">::</span><span class="n">cout</span><span class="p">;</span>
-<span class="n">using</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
+using std::cout;
+using std::endl;
+using namespace std;
 
-<span class="nb">int</span> <span class="n">main</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="n">Tokenizer</span> <span class="n">tokenizer</span><span class="p">;</span>
-  <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Token</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;1+2*3&quot;</span><span class="p">);</span>
- <span class="o">//</span> <span class="k">for</span> <span class="p">(</span><span class="n">Token</span> <span class="n">token</span> <span class="p">:</span> <span class="n">res</span><span class="p">)</span> <span class="p">{</span>
- <span class="o">//</span>   <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">token</span><span class="o">.</span><span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
- <span class="o">//</span> <span class="p">}</span>
-  <span class="n">Parser</span> <span class="n">parse</span><span class="p">;</span>
-  <span class="n">double</span> <span class="n">result</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">expression</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
-  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
+int main () {
+  Tokenizer tokenizer;
+  Parser parser;
+  std::string line;
+  while (!std::cin.eof()) {
+    std::getline (std::cin, line);
+    if (!line.empty())
+    {
+      std::vector&lt;Token&gt; res = tokenizer.split(line);
+      std::cout &lt;&lt; &quot;result: &quot; &lt;&lt; parser.parse_line(res);
+    }
+  }
+  return 0;
+}
 </pre></div>
 </div>
 </div>
@@ -79,6 +151,8 @@
 <h3>Code for Tokenizer Function</h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#include &quot;tokenizer.h&quot;</span>
 <span class="c1">#include &lt;iostream&gt;</span>
+<span class="c1">#include &lt;cstdlib&gt;</span>
+<span class="c1">#include &quot;error.h&quot;</span>
 
 <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Token</span><span class="o">&gt;</span> <span class="n">Tokenizer</span><span class="p">::</span><span class="n">split</span> <span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="nb">str</span><span class="p">)</span>
 <span class="p">{</span>
@@ -100,8 +174,23 @@
     <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="o">==</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
     <span class="p">{</span>
       <span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="n">op</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nb">str</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> 
+      <span class="p">{</span>
+        <span class="n">op</span><span class="o">+=</span> <span class="s1">&#39;^&#39;</span><span class="p">;</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Token</span><span class="p">(</span><span class="n">POW</span><span class="p">,</span><span class="n">op</span><span class="p">));</span>
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span>  
+      <span class="p">{</span>
+        <span class="n">op</span><span class="o">+=</span> <span class="n">c</span><span class="p">;</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Token</span><span class="p">(</span><span class="n">STAR</span><span class="p">,</span><span class="n">op</span><span class="p">));</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="o">==</span><span class="s1">&#39;^&#39;</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="n">op</span><span class="p">;</span>
       <span class="n">op</span> <span class="o">+=</span> <span class="n">c</span><span class="p">;</span>
-      <span class="n">result</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Token</span><span class="p">(</span><span class="n">STAR</span><span class="p">,</span><span class="n">op</span><span class="p">));</span>
+      <span class="n">result</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Token</span><span class="p">(</span><span class="n">POW</span><span class="p">,</span><span class="n">op</span><span class="p">));</span>
     <span class="p">}</span>
     <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="o">==</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
     <span class="p">{</span>
@@ -109,19 +198,54 @@
       <span class="n">op</span> <span class="o">+=</span> <span class="n">c</span><span class="p">;</span>
       <span class="n">result</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Token</span><span class="p">(</span><span class="n">SLASH</span><span class="p">,</span><span class="n">op</span><span class="p">));</span>
     <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="o">==</span><span class="s1">&#39;(&#39;</span><span class="p">)</span>
+    <span class="p">{</span>   
+      <span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="n">op</span><span class="p">;</span> 
+      <span class="n">op</span> <span class="o">+=</span> <span class="n">c</span><span class="p">;</span>
+      <span class="n">result</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Token</span><span class="p">(</span><span class="n">OPENPTS</span><span class="p">,</span><span class="n">op</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="o">==</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+    <span class="p">{</span>   
+      <span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="n">op</span><span class="p">;</span> 
+      <span class="n">op</span> <span class="o">+=</span> <span class="n">c</span><span class="p">;</span>
+      <span class="n">result</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Token</span><span class="p">(</span><span class="n">CLOSEPTS</span><span class="p">,</span><span class="n">op</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span>  <span class="p">(</span><span class="n">c</span><span class="o">==</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="n">number</span><span class="p">;</span>
+      <span class="n">number</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+      <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+      <span class="k">while</span><span class="p">(</span><span class="n">isdigit</span><span class="p">(</span><span class="nb">str</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>  <span class="n">number</span><span class="o">+=</span><span class="nb">str</span><span class="p">[</span><span class="n">i</span><span class="o">++</span><span class="p">];</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nb">str</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;.&#39;</span><span class="p">)</span> 
+      <span class="p">{</span>
+        <span class="n">error_exit</span> <span class="p">(</span><span class="s2">&quot;Invalid float!&quot;</span><span class="p">);</span>        
+      <span class="p">}</span>
+      <span class="n">result</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Token</span><span class="p">(</span><span class="n">NUMERIC</span><span class="p">,</span><span class="n">number</span><span class="p">));</span>
+      <span class="n">i</span><span class="o">--</span><span class="p">;</span>
+    <span class="p">}</span>
     <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">isblank</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="k">continue</span><span class="p">;</span>
     <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">isdigit</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
     <span class="p">{</span>
+      <span class="nb">int</span> <span class="n">dot_counter</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> 
       <span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="n">number</span><span class="p">;</span>
-      <span class="k">while</span><span class="p">(</span><span class="n">isdigit</span><span class="p">(</span><span class="nb">str</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="n">number</span><span class="o">+=</span><span class="nb">str</span><span class="p">[</span><span class="n">i</span><span class="o">++</span><span class="p">];</span>
+      <span class="k">while</span><span class="p">(</span><span class="n">isdigit</span><span class="p">(</span><span class="nb">str</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">||</span> <span class="p">(</span><span class="nb">str</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;.&#39;</span><span class="p">))</span>
+      <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">str</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="n">dot_counter</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">number</span><span class="o">+=</span><span class="nb">str</span><span class="p">[</span><span class="n">i</span><span class="o">++</span><span class="p">];</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">dot_counter</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">)</span> 
+      <span class="p">{</span>
+        <span class="n">error_exit</span> <span class="p">(</span><span class="s2">&quot;Invalid float!&quot;</span><span class="p">);</span>        
+      <span class="p">}</span>
       <span class="n">result</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Token</span><span class="p">(</span><span class="n">NUMERIC</span><span class="p">,</span><span class="n">number</span><span class="p">));</span>
       <span class="n">i</span><span class="o">--</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">else</span> 
-      <span class="n">std</span><span class="p">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s2">&quot;Unknown character&quot;</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+      <span class="n">error_exit</span> <span class="p">(</span><span class="s2">&quot;Unknown character&quot;</span><span class="p">);</span>        
   <span class="p">}</span>
   <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
+
 </pre></div>
 </div>
 </div>
@@ -129,77 +253,109 @@
 <h3>Code for Parser Function</h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#include &quot;tokenizer.h&quot;  </span>
 <span class="c1">#include &quot;parser.h&quot;</span>
+<span class="c1">#include &lt;cmath&gt;</span>
+<span class="c1">#include &quot;error.h&quot;</span>
 
+<span class="n">double</span> <span class="n">Parser</span><span class="p">::</span><span class="n">parse_line</span> <span class="p">(</span><span class="n">const</span> <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Token</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">tokens</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+  <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">expression</span> <span class="p">();</span>
+<span class="p">}</span>
 
-<span class="n">double</span> <span class="n">Parser</span><span class="p">::</span><span class="n">factor</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Token</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">)</span>
+<span class="n">double</span> <span class="n">Parser</span><span class="p">::</span><span class="n">factor</span> <span class="p">()</span>
 <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">NUMERIC</span><span class="p">)</span>
+  <span class="n">double</span> <span class="n">result</span> <span class="o">=</span> <span class="n">primary</span> <span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">tokens</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">tokens</span><span class="p">[</span><span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">POW</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="k">return</span> <span class="n">stod</span> <span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">val</span><span class="p">);</span>
+    <span class="n">counter</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">counter</span> <span class="o">&gt;=</span> <span class="n">tokens</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+      <span class="n">error_exit</span><span class="p">(</span><span class="s2">&quot;Syntax of power function incorrect!&quot;</span><span class="p">);</span>
+    <span class="n">double</span> <span class="n">exponent</span> <span class="o">=</span> <span class="n">primary</span><span class="p">();</span>
+    <span class="k">return</span> <span class="n">std</span><span class="p">::</span><span class="nb">pow</span> <span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">exponent</span><span class="p">);</span>
   <span class="p">}</span>
-<span class="o">//</span>  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;(&#39;</span><span class="p">)</span>
-<span class="o">//</span>   <span class="p">{</span>
-<span class="o">//</span>     <span class="n">counter</span><span class="o">++</span><span class="p">;</span> <span class="o">//</span> <span class="s1">&#39;(&#39;</span>
-<span class="o">//</span>     <span class="n">double</span> <span class="n">result</span> <span class="o">=</span> <span class="n">expression</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
-<span class="o">//</span>     <span class="n">counter</span><span class="o">++</span><span class="p">;</span> <span class="o">//</span> <span class="s1">&#39;)&#39;</span>
-<span class="o">//</span>     <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
-<span class="o">//</span>   <span class="p">}</span>
-  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">MINUS</span><span class="p">)</span>
+  <span class="k">else</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">double</span> <span class="n">Parser</span><span class="p">::</span><span class="n">primary</span> <span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">NUMERIC</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="n">stod</span> <span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">val</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">OPENPTS</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
-    <span class="k">return</span> <span class="o">-</span><span class="n">expression</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">expression</span><span class="p">();</span>
   <span class="p">}</span>
-  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">PLUS</span><span class="p">)</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">MINUS</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
-    <span class="k">return</span> <span class="o">+</span><span class="n">expression</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">OPENPTS</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+      <span class="k">return</span> <span class="o">-</span><span class="n">expression</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">else</span> 
+      <span class="k">return</span> <span class="o">-</span><span class="n">stod</span> <span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">val</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">PLUS</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">OPENPTS</span><span class="p">)</span> 
+    <span class="p">{</span>
+      <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+      <span class="k">return</span> <span class="o">+</span><span class="n">expression</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+      <span class="k">return</span> <span class="o">+</span><span class="n">stod</span> <span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">val</span><span class="p">);</span>
   <span class="p">}</span>
   <span class="k">else</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="o">//</span> <span class="n">error</span>
 <span class="p">}</span>
 
-<span class="n">double</span> <span class="n">Parser</span><span class="p">::</span><span class="n">term</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Token</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">)</span>
+<span class="n">double</span> <span class="n">Parser</span><span class="p">::</span><span class="n">term</span> <span class="p">()</span>
 <span class="p">{</span>
-  <span class="n">double</span> <span class="n">result</span> <span class="o">=</span> <span class="n">factor</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+  <span class="n">double</span> <span class="n">result</span> <span class="o">=</span> <span class="n">factor</span><span class="p">();</span>
   <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
-  <span class="k">while</span> <span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">STAR</span> <span class="o">||</span> <span class="n">res</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">SLASH</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">STAR</span><span class="p">)</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">counter</span><span class="o">&lt;</span><span class="n">tokens</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">&amp;&amp;</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">STAR</span> <span class="o">||</span> <span class="n">tokens</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">SLASH</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">STAR</span><span class="p">)</span>
     <span class="p">{</span>
       <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
-      <span class="n">result</span> <span class="o">*=</span> <span class="n">factor</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+      <span class="n">result</span> <span class="o">*=</span> <span class="n">factor</span><span class="p">();</span>
+      <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">else</span>
     <span class="p">{</span>
       <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
-      <span class="n">result</span> <span class="o">/=</span> <span class="n">factor</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+      <span class="n">result</span> <span class="o">/=</span> <span class="n">factor</span><span class="p">();</span>
+      <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
     <span class="p">}</span>
+  <span class="p">}</span>
   <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="n">double</span> <span class="n">Parser</span><span class="p">::</span><span class="n">expression</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Token</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">)</span>
+<span class="n">double</span> <span class="n">Parser</span><span class="p">::</span><span class="n">expression</span> <span class="p">()</span>
 <span class="p">{</span>
-  <span class="n">double</span> <span class="n">result</span> <span class="o">=</span> <span class="n">term</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
-<span class="o">//</span>   <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
-  <span class="k">while</span> <span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">PLUS</span> <span class="o">||</span> <span class="n">res</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">MINUS</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">PLUS</span><span class="p">)</span>
+  <span class="n">double</span> <span class="n">result</span> <span class="o">=</span> <span class="n">term</span><span class="p">();</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">counter</span><span class="o">&lt;</span><span class="n">tokens</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">&amp;&amp;</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">PLUS</span> <span class="o">||</span> <span class="n">tokens</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">MINUS</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">PLUS</span><span class="p">)</span>
     <span class="p">{</span>
       <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
-      <span class="n">result</span> <span class="o">+=</span> <span class="n">term</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+      <span class="n">result</span> <span class="o">+=</span> <span class="n">term</span><span class="p">();</span>
     <span class="p">}</span>
     <span class="k">else</span>
     <span class="p">{</span>
       <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
-      <span class="n">result</span> <span class="o">-=</span> <span class="n">term</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+      <span class="n">result</span> <span class="o">-=</span> <span class="n">term</span><span class="p">();</span>
     <span class="p">}</span>
+  <span class="p">}</span>
   <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
-
 </pre></div>
 </div>
-<p>Third test.</p>
-<div class="math">
-<p><img src="_images/math/bb522f2350d34d2f58ed9877a04d889bb4d74594.png" alt="\frac{ \sum_{t=0}^{N}f(t,k) }{N}"/></p>
-</div><p>and inline math <img class="math" src="_images/math/ba8f2d3e7cdf5ca8dbaee2cbeb4ace4b4f4bf2bb.png" alt="\frac{ \sum_{t=0}^{N}f(t,k) }{N}"/>.</p>
 </div>
 </div>
 </div>
