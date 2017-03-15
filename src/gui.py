@@ -5,14 +5,14 @@ import subprocess
 
 
 class Calculator:
-    # Constructor for adding buttons
+    # Constructor for calculator design
     def __init__(self, window):
         window.title('Calculator By Geetha, Ali, Yaseen, Majid and Mortaza')
         window.geometry()
         self.text_box = Tk.Entry(window, width=40, font="Noto 20 bold")
         self.text_box.grid(row=0, column=0, columnspan=6)
         self.text_box.focus_set()
-        # Buttons
+        # Buttons 
         Tk.Button(window,text="+",font="Noto 10 bold",width=14,height=6,command=lambda:self.action('+')).grid(row=4, column=3)
         Tk.Button(window,text="*",font="Noto 10 bold",width=14,height=6,command=lambda:self.action('*')).grid(row=2, column=3)
         Tk.Button(window,text="-",font="Noto 10 bold",width=14,height=6,command=lambda:self.action('-')).grid(row=3, column=3)
@@ -34,20 +34,23 @@ class Calculator:
         Tk.Button(window,text="^",font="Noto 10 bold",width=14,height=6,command=lambda:self.action('^')).grid(row=3, column=4)
         Tk.Button(window,text='Clear',font="Noto 10 bold",width=14,height=6,command=lambda:self.clearall()).grid(row=4, column=4)
     
+     
     def action(self, arg):
-        """Attaching button's value to end of the text box"""
+        """Attaching button's value to the text box"""
         self.text_box.insert(Tk.END, arg)
 
     def get(self):
-        """Getting expression from c++ code"""
+        """Getting input from text box"""
         self.expression = self.text_box.get()
 
     def equals(self):
         self.get()
         self.expression=self.expression.replace('(','\(') # Because of echo!
         self.expression=self.expression.replace(')','\)') # Because of echo!
+        # Input to C++ code for calculation
         self.value= subprocess.check_output("echo {} | ./main.x".format(self.expression), shell=True)
         self.text_box.delete(0, Tk.END)
+        #Display C++ result
         self.text_box.insert(0, self.value)
 
     def clearall(self):

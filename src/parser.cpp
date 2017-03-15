@@ -3,12 +3,15 @@
 #include <cmath>
 #include "error.h"
 
+// This function is intermediate between main program and this class.
 double Parser::parse_line (const std::vector<Token> &t) {
   tokens = t;
   counter = 0;
   return expression ();
 }
 
+
+// This function get factor and call the primary fun to calculate these.
 double Parser::factor ()
 {
   double result = primary ();
@@ -24,6 +27,7 @@ double Parser::factor ()
     return result;
 }
 
+// This function calling  from factor fun and calculate factors.
 double Parser::primary ()
 {
   if (tokens[counter].kind == NUMERIC)
@@ -61,6 +65,7 @@ double Parser::primary ()
     return 0; // error
 }
 
+// This function get terms from expression fun and return terms's result to expression fun.
 double Parser::term ()
 {
   double result = factor();
@@ -83,6 +88,7 @@ double Parser::term ()
   return result;
 }
 
+// This function get expression and return final result.
 double Parser::expression ()
 {
   double result = term();

@@ -3,11 +3,14 @@
 #include <cstdlib>
 #include "error.h"
 
+
+// This function split tokens from input. 
 std::vector<Token> Tokenizer::split (std::string str)
 {
   std::vector<Token> result;
   for (int i=0; i<str.length(); ++i) {
     char c = str[i];
+// These blocks detect operators from input.
     if (c=='+')
     {
       std::string op;
@@ -72,7 +75,8 @@ std::vector<Token> Tokenizer::split (std::string str)
       result.push_back(Token(NUMERIC,number));
       i--;
     }
-    else if (isblank(c)) continue;
+    else if (isblank(c)) continue;.
+// This block detect numbers from input.
     else if (isdigit(c))
     {
       int dot_counter=0; 
