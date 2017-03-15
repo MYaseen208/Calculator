@@ -3,6 +3,7 @@
 
 #include <string>
 
+// Define kind type for tokens.
 enum Kind {NUMERIC,PLUS,MINUS,STAR,SLASH,POW,OPENPTS,CLOSEPTS,IDENTIFIER};
 
 struct Token {
