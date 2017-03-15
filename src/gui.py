@@ -30,8 +30,9 @@ class Calculator:
         Tk.Button(window,text="(",font="Noto 10 bold",width=14,height=6,command=lambda:self.action('(')).grid(row=1, column=4)
         Tk.Button(window,text=")",font="Noto 10 bold",width=14,height=6,command=lambda:self.action(')')).grid(row=2, column=4)
         Tk.Button(window,text="=",font="Noto 10 bold",width=14,height=6,command=lambda:self.equals()).grid(row=4, column=2)
-        Tk.Button(window,text='Clear',font="Noto 10 bold",width=14,height=13,command=lambda:self.clearall()).grid(row=3, column=4,rowspan=2)
-
+        Tk.Button(window,text="^",font="Noto 10 bold",width=14,height=6,command=lambda:self.action('^')).grid(row=3, column=4)
+        Tk.Button(window,text='Clear',font="Noto 10 bold",width=14,height=6,command=lambda:self.clearall()).grid(row=4, column=4)
+    
     def action(self, arg):
         """Attaching button's value to end of the text box"""
         self.text_box.insert(Tk.END, arg)
