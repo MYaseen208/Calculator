@@ -59,16 +59,6 @@ Code for Parser Function
 
 
 
-Third test.
-
-.. math::
-
-   \frac{ \sum_{t=0}^{N}f(t,k) }{N}
-   
-   
-and inline math :math:`\frac{ \sum_{t=0}^{N}f(t,k) }{N}`.
-
-
 Indices and tables
 ==================
 

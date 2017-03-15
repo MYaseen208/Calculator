@@ -1,5 +1,5 @@
 #By Ali & Geetha
-import Tkinter as Tk
+import tkinter as Tk
 import subprocess
 
 
